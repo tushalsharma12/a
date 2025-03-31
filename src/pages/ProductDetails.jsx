@@ -31,7 +31,7 @@ function ProductDetails() {
         window.scrollTo(0, 0);
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/products/${id}`);
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/products/${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status} - ${response.statusText}`);
                 }
@@ -48,7 +48,7 @@ function ProductDetails() {
     }, [id]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/products")
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/products`)
             .then((res) => {
                 setProducts(res.data);
                 setLoading(false);

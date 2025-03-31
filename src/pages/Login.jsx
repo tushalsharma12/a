@@ -24,7 +24,7 @@ function Login() {
         setLoading(true);
         setError("");
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, { email, password });
             localStorage.setItem("token", response.data.token);
             fetchCart();
             const { user } = response.data;   //const user = response.data.user => same

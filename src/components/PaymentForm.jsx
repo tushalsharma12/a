@@ -30,7 +30,7 @@ const PaymentForm = ({ amount, cartItems }) => {
 
             // Create payment intent
             const { data } = await axios.post(
-                "http://localhost:5000/api/payment/create-payment-intent",
+                `${import.meta.env.VITE_API_BASE_URL}/api/payment/create-payment-intent`,
                 { amount: Math.round(amount * 100) },
                 {
                     headers: {
@@ -65,7 +65,7 @@ const PaymentForm = ({ amount, cartItems }) => {
                 try {
                     // Create order after successful payment
                     const orderResponse = await axios.post(
-                        'http://localhost:5000/api/order/add',
+                        `${import.meta.env.VITE_API_BASE_URL}/api/order/add`,
                         {
                             items: cartItems.map(item => ({
                                 productId: item.productId._id,

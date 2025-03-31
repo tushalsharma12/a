@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
 
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/api/cart", {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -47,7 +47,7 @@ export const CartProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:5000/api/cart/add",
+        `${import.meta.env.VITE_API_BASE_URL}/api/cart/add`,
         {
           productId: product._id,
           quantity: quantity
@@ -75,7 +75,7 @@ export const CartProvider = ({ children }) => {
 
     try {
       setLoading(true);
-      const response = await axios.delete(`http://localhost:5000/api/cart/remove/${productId}`, {
+      const response = await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/cart/remove/${productId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data) {

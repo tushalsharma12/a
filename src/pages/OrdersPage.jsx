@@ -18,8 +18,7 @@ const OrdersPage = () => {
                     navigate("/login");
                     return;
                 }
-
-                const { data } = await axios.get("http://localhost:5000/api/order/user", {
+                const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/order/user`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 

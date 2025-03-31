@@ -94,7 +94,7 @@ const Navbar = () => {
             }
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/products/search`, {
+                const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/products/search`, {
                     params: { query: searchQuery }
                 });
                 setFilteredProducts(response.data);
@@ -110,7 +110,7 @@ const Navbar = () => {
     useEffect(() => {
         const fetchSections = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/products/sections`);
+                const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/products/sections`);
                 setSections(Array.isArray(response.data) ? response.data : []); // Ensure it's an array
             } catch (error) {
                 console.error("Categories Fetch Error:", error);
@@ -124,7 +124,7 @@ const Navbar = () => {
         const fetchUserProfile = async () => {
             if (user) {
                 try {
-                    const res = await fetch("http://localhost:5000/api/auth/profile", {
+                    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/profile`, {
                         headers: {
                             "Authorization": `Bearer ${localStorage.getItem("token")}`
                         }

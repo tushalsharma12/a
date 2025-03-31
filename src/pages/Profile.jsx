@@ -16,7 +16,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/auth/profile", {
+                const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/profile`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ const Profile = () => {
 
     const handleUpdateProfile = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/auth/update-profile", {
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/update-profile`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

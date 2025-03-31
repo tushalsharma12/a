@@ -20,7 +20,7 @@ function Lighting() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/products")
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/products`)
             .then((res) => {
                 setProducts(res.data);
                 setLoading(false);

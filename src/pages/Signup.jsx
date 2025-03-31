@@ -20,7 +20,7 @@ const Signup = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            await axios.post("http://localhost:5000/api/auth/register", formData);
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, formData);
             toast.success("Registration Successful! 🎉", { autoClose: 2000 });
             setFormData({ name: "", email: "", password: "" });
             setTimeout(() => navigate("/login"), 2000);
